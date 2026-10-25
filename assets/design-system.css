@@ -1,0 +1,872 @@
+/*
+ * Design system — Biblioteca Visual Pequenas Descobertas
+ * Derivado do key visual “Berçário descomplicado”.
+ * Mantém o conteúdo e as imagens da landing page; redefine apenas sua expressão visual.
+ */
+
+@font-face {
+  font-family: "Nunito Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 1000;
+  src: url("./nunito-latin-wght-normal-BzFMHfZw.woff2") format("woff2-variations");
+}
+
+:root {
+  color-scheme: light;
+
+  /* Cores-base extraídas do key visual */
+  --kv-paper: #fefcf3;
+  --kv-grid: #d1f5ef;
+  --kv-navy: #26477e;
+  --kv-purple: #814ee9;
+  --kv-pink: #e47fa9;
+  --kv-coral: #fb6b53;
+  --kv-hot-pink: #ec0489;
+  --kv-pale-yellow: #fee599;
+  --kv-gold: #fdc916;
+  --kv-orange: #ec6529;
+  --kv-green: #149b7a;
+  --kv-blue: #1296d3;
+  --kv-mint: #83c9a5;
+  --kv-light-blue: #94cbdf;
+  --kv-lavender: #ab94c7;
+  --kv-plum: #a74686;
+  --kv-lime: #a5ce36;
+  --kv-white: #ffffff;
+
+  /* Tokens semânticos */
+  --background: var(--kv-paper);
+  --foreground: var(--kv-navy);
+  --card: var(--kv-white);
+  --card-foreground: var(--kv-navy);
+  --primary: var(--kv-hot-pink);
+  --primary-foreground: var(--kv-white);
+  --secondary: var(--kv-pale-yellow);
+  --secondary-foreground: var(--kv-navy);
+  --muted: #f8f3e8;
+  --muted-foreground: #587096;
+  --accent: #dff3e8;
+  --accent-foreground: #0d735a;
+  --destructive: var(--kv-coral);
+  --destructive-foreground: var(--kv-white);
+  --border: #d8e2e7;
+  --input: #d8e2e7;
+  --ring: var(--kv-purple);
+  --mint: #dff3e8;
+  --mint-foreground: #0d735a;
+  --sun: var(--kv-pale-yellow);
+  --sun-foreground: var(--kv-navy);
+  --lilac: #ece5fc;
+  --lilac-foreground: #5931af;
+  --cream: #fff7df;
+
+  /* Ritmo, formas e movimento */
+  --kv-grid-size: 84px;
+  --kv-grid-line: 2px;
+  --kv-section-space: clamp(4.5rem, 8vw, 7.5rem);
+  --kv-content-wide: 72rem;
+  --kv-content: 48rem;
+  --kv-radius-sm: 16px 20px 14px 22px;
+  --kv-radius-md: 24px 30px 22px 34px;
+  --kv-radius-lg: 38px 48px 34px 52px;
+  --kv-ease: cubic-bezier(.2, .78, .26, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--kv-paper);
+}
+
+body.kv-design-system {
+  min-width: 320px;
+  background-color: var(--kv-paper);
+  color: var(--kv-navy);
+  font-family: "Nunito Variable", Nunito, ui-rounded, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  padding: .75rem 1rem;
+  border-radius: 999px;
+  background: var(--kv-navy);
+  color: var(--kv-white);
+  font-weight: 900;
+  transform: translateY(-180%);
+  transition: transform .2s ease;
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+::selection {
+  background: var(--kv-pale-yellow);
+  color: var(--kv-navy);
+}
+
+:focus-visible {
+  outline: 4px solid var(--kv-purple);
+  outline-offset: 4px;
+}
+
+body.kv-design-system h1,
+body.kv-design-system h2,
+body.kv-design-system h3,
+body.kv-design-system h4 {
+  color: var(--kv-navy);
+  font-family: "Nunito Variable", Nunito, ui-rounded, system-ui, sans-serif;
+  font-variation-settings: "wght" 900;
+  font-weight: 900;
+  letter-spacing: -.035em;
+}
+
+body.kv-design-system p,
+body.kv-design-system li,
+body.kv-design-system button,
+body.kv-design-system a {
+  letter-spacing: -.008em;
+}
+
+body.kv-design-system main {
+  position: relative;
+  background-color: var(--kv-paper);
+}
+
+body.kv-design-system main > header {
+  position: relative;
+  z-index: 20;
+  overflow: hidden;
+  min-height: 46px;
+  padding-block: .8rem;
+  background: var(--kv-purple);
+  color: var(--kv-white);
+}
+
+body.kv-design-system main > header::before,
+body.kv-design-system main > header::after {
+  position: absolute;
+  top: 50%;
+  color: var(--kv-pale-yellow);
+  font-size: 1.4rem;
+  line-height: 1;
+  transform: translateY(-50%) rotate(-10deg);
+  content: "✦";
+}
+
+body.kv-design-system main > header::before { left: clamp(1rem, 7vw, 7rem); }
+body.kv-design-system main > header::after { right: clamp(1rem, 7vw, 7rem); }
+
+body.kv-design-system main > header p {
+  position: relative;
+  z-index: 1;
+  color: var(--kv-white);
+  font-size: clamp(.68rem, 2.5vw, .82rem);
+  font-weight: 900;
+  letter-spacing: .09em;
+}
+
+body.kv-design-system main > section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: var(--kv-section-space);
+  background-color: var(--kv-paper);
+}
+
+body.kv-design-system main > section > div {
+  position: relative;
+  z-index: 3;
+}
+
+body.kv-design-system main > section > div.max-w-2xl {
+  width: min(100%, var(--kv-content));
+  max-width: var(--kv-content);
+}
+
+body.kv-design-system main > section h2 {
+  max-width: 18ch;
+  margin-inline: auto;
+  font-size: clamp(1.85rem, 4.4vw, 3.05rem);
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+body.kv-design-system main > section h2::after {
+  display: block;
+  width: 64px;
+  height: 11px;
+  margin: 1.15rem auto 0;
+  border-radius: 64% 36% 58% 42% / 58% 53% 47% 42%;
+  background: var(--kv-gold);
+  content: "";
+  transform: rotate(-2deg);
+}
+
+body.kv-design-system .text-muted-foreground,
+body.kv-design-system .\!text-muted-foreground {
+  color: var(--muted-foreground) !important;
+}
+
+/* Papel quadriculado: elemento estrutural do key visual */
+body.kv-design-system main > section:nth-of-type(1),
+body.kv-design-system main > section:nth-of-type(5),
+body.kv-design-system main > section:nth-of-type(9),
+body.kv-design-system footer {
+  background-color: var(--kv-paper);
+  background-image:
+    linear-gradient(to right, var(--kv-grid) var(--kv-grid-line), transparent var(--kv-grid-line)),
+    linear-gradient(to bottom, var(--kv-grid) var(--kv-grid-line), transparent var(--kv-grid-line));
+  background-position: 22px 0, 0 36px;
+  background-size: var(--kv-grid-size) var(--kv-grid-size);
+}
+
+/* Alternância de fundos sem gradientes */
+body.kv-design-system main > section:nth-of-type(2) { background: #fff7df; }
+body.kv-design-system main > section:nth-of-type(3) { background: var(--kv-paper); }
+body.kv-design-system main > section:nth-of-type(4) { background: #f2edff; }
+body.kv-design-system main > section:nth-of-type(6) { background: #eaf8f5; }
+body.kv-design-system main > section:nth-of-type(7) { background: #fff0f6; }
+body.kv-design-system main > section:nth-of-type(8) { background: #fff7df; }
+body.kv-design-system main > section:nth-of-type(10) { background: #fff3bd; }
+body.kv-design-system main > section:nth-of-type(11) { background: var(--kv-paper); }
+body.kv-design-system main > section:nth-of-type(12) { background: #eaf8f5; }
+
+/* Hero */
+body.kv-design-system main > section:first-of-type {
+  min-height: min(940px, calc(100svh - 46px));
+  padding-top: clamp(3.25rem, 7vw, 6rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+body.kv-design-system main > section:first-of-type::before {
+  position: absolute;
+  top: 7%;
+  left: max(-2.2rem, calc(50% - 44rem));
+  z-index: 0;
+  color: var(--kv-coral);
+  font-family: "Nunito Variable", Nunito, sans-serif;
+  font-size: clamp(8rem, 18vw, 15rem);
+  font-weight: 1000;
+  line-height: 1;
+  content: "#";
+  transform: rotate(-13deg);
+}
+
+body.kv-design-system main > section:first-of-type::after {
+  position: absolute;
+  right: max(-5.5rem, calc(50% - 47rem));
+  bottom: 6%;
+  z-index: 0;
+  color: var(--kv-pink);
+  font-family: "Nunito Variable", Nunito, sans-serif;
+  font-size: clamp(10rem, 23vw, 20rem);
+  font-weight: 1000;
+  line-height: 1;
+  content: "@";
+  transform: rotate(7deg);
+}
+
+body.kv-design-system main > section:first-of-type > div {
+  width: min(100%, var(--kv-content-wide));
+  max-width: var(--kv-content-wide);
+}
+
+body.kv-design-system main > section:first-of-type .text-center { position: relative; }
+
+body.kv-design-system main > section:first-of-type .text-center::before,
+body.kv-design-system main > section:first-of-type .text-center::after {
+  position: absolute;
+  z-index: -1;
+  color: var(--kv-pale-yellow);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1;
+  content: "✦";
+}
+
+body.kv-design-system main > section:first-of-type .text-center::before {
+  top: 19%;
+  left: -4%;
+  transform: rotate(-9deg);
+}
+
+body.kv-design-system main > section:first-of-type .text-center::after {
+  right: 0;
+  bottom: 21%;
+  transform: rotate(11deg) scale(.72);
+}
+
+body.kv-design-system main > section:first-of-type img.brand-logo {
+  width: clamp(8.5rem, 18vw, 12.5rem);
+  height: auto;
+  filter: none;
+}
+
+body.kv-design-system main > section:first-of-type h1 {
+  max-width: 17ch;
+  margin-inline: auto;
+  color: var(--kv-navy);
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  line-height: .99;
+  text-wrap: balance;
+}
+
+body.kv-design-system main > section:first-of-type h1::first-line { color: var(--kv-hot-pink); }
+
+body.kv-design-system main > section:first-of-type p {
+  color: var(--kv-navy);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  font-weight: 650;
+}
+
+body.kv-design-system main > section:first-of-type img[alt^="Mockup"] {
+  position: relative;
+  z-index: 1;
+  filter: saturate(1.03);
+}
+
+body.kv-design-system .animate-bounce.text-primary { color: var(--kv-purple); }
+
+/* Cartões e blocos — planos, sem sombras, com geometria orgânica */
+body.kv-design-system .shadow-soft,
+body.kv-design-system .shadow-card,
+body.kv-design-system .shadow-cta {
+  box-shadow: none !important;
+}
+
+body.kv-design-system .rounded-2xl,
+body.kv-design-system .rounded-xl { border-radius: var(--kv-radius-sm); }
+
+body.kv-design-system .rounded-3xl { border-radius: var(--kv-radius-lg); }
+body.kv-design-system .bg-card { background: var(--kv-white); }
+
+body.kv-design-system main > section :is(.bg-card, .border-border) {
+  border-color: color-mix(in srgb, var(--kv-navy) 13%, transparent);
+}
+
+body.kv-design-system main > section .flex.items-start.gap-4.rounded-2xl.bg-card,
+body.kv-design-system main > section li.rounded-2xl.bg-card,
+body.kv-design-system main > section .flex.flex-col.items-center.rounded-2xl.bg-card,
+body.kv-design-system main > section .overflow-hidden.rounded-2xl.bg-card,
+body.kv-design-system main > section .rounded-3xl.bg-card {
+  position: relative;
+  border: 2px solid color-mix(in srgb, var(--kv-navy) 10%, transparent);
+  transition: transform .25s var(--kv-ease), border-color .25s ease;
+}
+
+@media (hover: hover) {
+  body.kv-design-system main > section .flex.items-start.gap-4.rounded-2xl.bg-card:hover,
+  body.kv-design-system main > section li.rounded-2xl.bg-card:hover,
+  body.kv-design-system main > section .flex.flex-col.items-center.rounded-2xl.bg-card:hover {
+    border-color: color-mix(in srgb, var(--kv-purple) 34%, transparent);
+    transform: translateY(-4px) rotate(-.25deg);
+  }
+}
+
+body.kv-design-system main > section:nth-of-type(2) .grid > div:nth-child(1),
+body.kv-design-system main > section:nth-of-type(8) .grid > div:nth-child(1) { border-top: 9px solid var(--kv-blue); }
+body.kv-design-system main > section:nth-of-type(2) .grid > div:nth-child(2),
+body.kv-design-system main > section:nth-of-type(8) .grid > div:nth-child(2) { border-top: 9px solid var(--kv-gold); }
+body.kv-design-system main > section:nth-of-type(2) .grid > div:nth-child(3),
+body.kv-design-system main > section:nth-of-type(8) .grid > div:nth-child(3) { border-top: 9px solid var(--kv-purple); }
+body.kv-design-system main > section:nth-of-type(2) .grid > div:nth-child(4),
+body.kv-design-system main > section:nth-of-type(8) .grid > div:nth-child(4) { border-top: 9px solid var(--kv-coral); }
+body.kv-design-system main > section:nth-of-type(8) .grid > div:nth-child(5) { border-top: 9px solid var(--kv-green); }
+
+body.kv-design-system main > section:nth-of-type(3) li:nth-child(6n + 1) { border-left: 7px solid var(--kv-blue); }
+body.kv-design-system main > section:nth-of-type(3) li:nth-child(6n + 2) { border-left: 7px solid var(--kv-gold); }
+body.kv-design-system main > section:nth-of-type(3) li:nth-child(6n + 3) { border-left: 7px solid var(--kv-lavender); }
+body.kv-design-system main > section:nth-of-type(3) li:nth-child(6n + 4) { border-left: 7px solid var(--kv-coral); }
+body.kv-design-system main > section:nth-of-type(3) li:nth-child(6n + 5) { border-left: 7px solid var(--kv-lime); }
+body.kv-design-system main > section:nth-of-type(3) li:nth-child(6n + 6) { border-left: 7px solid var(--kv-pink); }
+
+/* Ícones sólidos e multicoloridos */
+body.kv-design-system main > section .grid.place-items-center.rounded-xl,
+body.kv-design-system main > section .grid.place-items-center.rounded-lg {
+  color: var(--kv-navy);
+  border-radius: 58% 42% 54% 46% / 46% 54% 42% 58%;
+  transform: rotate(-2deg);
+}
+
+body.kv-design-system .bg-mint { background-color: #bfe9d4; }
+body.kv-design-system .bg-sun { background-color: var(--kv-pale-yellow); }
+body.kv-design-system .bg-lilac { background-color: #ded2fa; }
+body.kv-design-system .bg-accent { background-color: #ffd2df; }
+
+body.kv-design-system svg.text-primary,
+body.kv-design-system .text-primary { color: var(--kv-hot-pink); }
+
+body.kv-design-system .text-mint-foreground,
+body.kv-design-system .text-accent-foreground { color: var(--kv-green); }
+
+/* Seção antes/depois */
+body.kv-design-system main > section:nth-of-type(4) .grid > div:first-child {
+  background: #fff;
+  border: 2px solid #dbe2ec;
+  border-top: 10px solid var(--kv-lavender);
+}
+
+body.kv-design-system main > section:nth-of-type(4) .grid > div:last-child {
+  background: #e8f7ef;
+  border: 2px solid #b8dfcd;
+  border-top: 10px solid var(--kv-green);
+}
+
+/* Carrossel das experiências */
+body.kv-design-system main > section:nth-of-type(5) > div {
+  width: min(100%, 64rem);
+  max-width: 64rem;
+}
+
+body.kv-design-system main > section:nth-of-type(5) img[alt^="Exemplo de atividade"] {
+  border: 8px solid var(--kv-white);
+  border-radius: 30px 38px 28px 42px;
+  background: var(--kv-white);
+}
+
+body.kv-design-system main > section:nth-of-type(5) .inline-flex.rounded-full {
+  border: 2px solid color-mix(in srgb, var(--kv-green) 28%, transparent);
+  background: #e2f7ec;
+  color: var(--kv-green);
+}
+
+/* Campos de experiência e conteúdo */
+body.kv-design-system main > section:nth-of-type(6) .grid > div:nth-child(5n + 1) { background: #dff3e8; }
+body.kv-design-system main > section:nth-of-type(6) .grid > div:nth-child(5n + 2) { background: #fff0b9; }
+body.kv-design-system main > section:nth-of-type(6) .grid > div:nth-child(5n + 3) { background: #eee7ff; }
+body.kv-design-system main > section:nth-of-type(6) .grid > div:nth-child(5n + 4) { background: #ffe4ec; }
+body.kv-design-system main > section:nth-of-type(6) .grid > div:nth-child(5n + 5) { background: #dff1fa; }
+
+body.kv-design-system main > section:nth-of-type(7)::before {
+  position: absolute;
+  top: 12%;
+  right: -3rem;
+  z-index: -1;
+  color: var(--kv-pink);
+  font-size: clamp(9rem, 20vw, 16rem);
+  font-weight: 1000;
+  line-height: 1;
+  content: "@";
+  opacity: .2;
+  transform: rotate(9deg);
+}
+
+body.kv-design-system main > section:nth-of-type(7) img[alt^="Mockup"] { filter: saturate(1.05); }
+
+/* Chamada de posicionamento */
+body.kv-design-system main > section:nth-of-type(8) .border-primary.bg-primary\/5 {
+  border: 0;
+  border-radius: var(--kv-radius-lg);
+  background: var(--kv-navy);
+  color: var(--kv-white);
+}
+
+body.kv-design-system main > section:nth-of-type(8) .border-primary.bg-primary\/5 p { color: var(--kv-white) !important; }
+body.kv-design-system main > section:nth-of-type(8) .border-primary.bg-primary\/5 p:last-child { color: var(--kv-pale-yellow) !important; }
+
+/* Oferta */
+body.kv-design-system main > section:nth-of-type(9)::before {
+  position: absolute;
+  bottom: -7rem;
+  left: -4rem;
+  z-index: 0;
+  color: var(--kv-purple);
+  font-size: clamp(12rem, 25vw, 22rem);
+  font-weight: 1000;
+  line-height: 1;
+  content: "&";
+  transform: rotate(-24deg);
+}
+
+body.kv-design-system main > section:nth-of-type(9) > div {
+  width: min(100%, 62rem);
+  max-width: 62rem;
+}
+
+body.kv-design-system main > section:nth-of-type(9) .grid > div {
+  border: 3px solid color-mix(in srgb, var(--kv-navy) 14%, transparent);
+  background: rgba(255, 255, 255, .96);
+}
+
+body.kv-design-system main > section:nth-of-type(9) .grid > div:last-child { border: 4px solid var(--kv-hot-pink); }
+body.kv-design-system main > section:nth-of-type(9) .absolute.bg-primary { background: var(--kv-hot-pink); }
+
+body.kv-design-system main > section:nth-of-type(9) img.offer-product-mockup {
+  width: min(100%, 23rem) !important;
+  height: auto;
+  object-fit: contain;
+}
+
+body.kv-design-system main > section:nth-of-type(9) .text-5xl,
+body.kv-design-system main > section:nth-of-type(9) .text-3xl {
+  color: var(--kv-hot-pink);
+  font-family: "Nunito Variable", Nunito, sans-serif;
+  font-weight: 1000;
+}
+
+/* Botões */
+body.kv-design-system a.inline-flex.w-full,
+body.kv-design-system button.fixed {
+  min-height: 56px;
+  border-radius: 21px 28px 19px 31px;
+  font-weight: 950;
+  letter-spacing: .015em;
+  transition: transform .2s var(--kv-ease), background-color .2s ease, color .2s ease;
+}
+
+body.kv-design-system a.bg-primary,
+body.kv-design-system button.bg-primary {
+  border: 3px solid var(--kv-hot-pink);
+  background: var(--kv-hot-pink);
+  color: var(--kv-white);
+}
+
+body.kv-design-system a.bg-card {
+  border: 3px solid var(--kv-navy);
+  background: var(--kv-white);
+  color: var(--kv-navy) !important;
+}
+
+@media (hover: hover) {
+  body.kv-design-system a.inline-flex.w-full:hover,
+  body.kv-design-system button.fixed:hover { transform: translateY(-3px) rotate(-.35deg); }
+
+  body.kv-design-system a.bg-primary:hover,
+  body.kv-design-system button.bg-primary:hover {
+    background: #cf0077;
+    filter: none;
+  }
+}
+
+body.kv-design-system .animate-pulse-cta { animation: kv-cta 2.8s ease-in-out infinite; }
+
+@keyframes kv-cta {
+  0%, 100% { transform: rotate(-.35deg) scale(1); }
+  50% { transform: rotate(.35deg) scale(1.025); }
+}
+
+/* Prova social */
+body.kv-design-system main > section:nth-of-type(10) .overflow-hidden.rounded-2xl {
+  border: 8px solid var(--kv-white);
+  border-radius: var(--kv-radius-lg);
+  background: var(--kv-white);
+}
+
+body.kv-design-system main > section:nth-of-type(10) button { background: var(--kv-hot-pink); }
+
+/* Garantia */
+body.kv-design-system main > section:nth-of-type(11) .rounded-3xl.bg-card {
+  padding: clamp(2rem, 6vw, 4rem);
+  border: 3px solid var(--kv-pale-yellow);
+  background: #fff9df;
+}
+
+body.kv-design-system main > section:nth-of-type(11) img {
+  width: 8.5rem;
+  height: 8.5rem;
+}
+
+/* FAQ */
+body.kv-design-system main > section:nth-of-type(12) .overflow-hidden.rounded-2xl.bg-card {
+  border: 2px solid color-mix(in srgb, var(--kv-navy) 12%, transparent);
+  border-radius: 20px 28px 18px 30px;
+}
+
+body.kv-design-system main > section:nth-of-type(12) button { color: var(--kv-navy); }
+body.kv-design-system main > section:nth-of-type(12) button[aria-expanded="true"] { background: #fff7cf; }
+
+body.kv-design-system main > section:nth-of-type(12) button + p {
+  color: #526b92;
+  font-size: .96rem;
+  line-height: 1.65;
+}
+
+/* Rodapé */
+body.kv-design-system footer {
+  position: relative;
+  padding-block: 3.5rem;
+  border-top: 0;
+}
+
+body.kv-design-system footer::before {
+  position: absolute;
+  top: 1rem;
+  left: clamp(1rem, 8vw, 8rem);
+  color: var(--kv-coral);
+  font-size: 4.5rem;
+  font-weight: 1000;
+  line-height: 1;
+  content: "#";
+  transform: rotate(-12deg);
+}
+
+body.kv-design-system footer p {
+  color: var(--kv-navy) !important;
+  font-weight: 700;
+}
+
+body.kv-design-system footer img.brand-logo {
+  width: clamp(5.75rem, 9vw, 7.25rem);
+  height: auto;
+  object-fit: contain;
+}
+
+/* Desktop: hero editorial e áreas de conteúdo mais amplas */
+@media (min-width: 880px) {
+  body.kv-design-system main > section:first-of-type .text-center {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(440px, 1.1fr);
+    grid-template-areas:
+      "logo media"
+      "title media"
+      "copy media";
+    column-gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    text-align: left;
+  }
+
+  body.kv-design-system main > section:first-of-type img.brand-logo {
+    grid-area: logo;
+    justify-self: start;
+    margin: 0;
+  }
+
+  body.kv-design-system main > section:first-of-type h1 {
+    grid-area: title;
+    max-width: 12ch;
+    margin-inline: 0;
+  }
+
+  body.kv-design-system main > section:first-of-type .text-center > div {
+    grid-area: media;
+    align-self: center;
+    margin: 0;
+  }
+
+  body.kv-design-system main > section:first-of-type .text-center > p {
+    grid-area: copy;
+    max-width: 38ch;
+    margin-inline: 0;
+  }
+
+  body.kv-design-system main > section:nth-of-type(2) > div,
+  body.kv-design-system main > section:nth-of-type(3) > div,
+  body.kv-design-system main > section:nth-of-type(4) > div,
+  body.kv-design-system main > section:nth-of-type(6) > div,
+  body.kv-design-system main > section:nth-of-type(7) > div,
+  body.kv-design-system main > section:nth-of-type(8) > div,
+  body.kv-design-system main > section:nth-of-type(10) > div,
+  body.kv-design-system main > section:nth-of-type(11) > div,
+  body.kv-design-system main > section:nth-of-type(12) > div {
+    width: min(100%, 62rem);
+    max-width: 62rem;
+  }
+
+  body.kv-design-system main > section:nth-of-type(2) .grid,
+  body.kv-design-system main > section:nth-of-type(3) ul,
+  body.kv-design-system main > section:nth-of-type(6) .grid,
+  body.kv-design-system main > section:nth-of-type(7) .grid,
+  body.kv-design-system main > section:nth-of-type(8) .grid { gap: 1.25rem; }
+}
+
+@media (max-width: 879px) {
+  :root {
+    --kv-grid-size: 64px;
+    --kv-section-space: clamp(4rem, 16vw, 5.5rem);
+  }
+
+  body.kv-design-system main > section:first-of-type { min-height: auto; }
+
+  body.kv-design-system main > section:first-of-type::before {
+    top: 4%;
+    left: -2.6rem;
+    opacity: .24;
+  }
+
+  body.kv-design-system main > section:first-of-type::after {
+    right: -5.5rem;
+    bottom: 2%;
+    opacity: .2;
+  }
+
+  body.kv-design-system main > section:first-of-type .text-center::before {
+    top: 26%;
+    left: 0;
+    opacity: .7;
+  }
+
+  body.kv-design-system main > section:first-of-type .text-center::after {
+    right: -1rem;
+    bottom: 18%;
+    opacity: .7;
+  }
+
+  body.kv-design-system main > section:first-of-type img[alt^="Mockup"] { margin-inline: auto; }
+
+  body.kv-design-system main > section:nth-of-type(9)::before,
+  body.kv-design-system footer::before { opacity: .16; }
+}
+
+@media (max-width: 520px) {
+  body.kv-design-system main > header::before,
+  body.kv-design-system main > header::after { display: none; }
+
+  body.kv-design-system main > section { padding-inline: 1.15rem; }
+
+  body.kv-design-system main > section h2 { font-size: clamp(1.75rem, 9vw, 2.35rem); }
+  body.kv-design-system main > section:first-of-type h1 { font-size: clamp(2rem, 10.2vw, 3rem); }
+
+  body.kv-design-system main > section:first-of-type img.brand-logo {
+    height: auto;
+    max-height: none;
+    max-width: 9.5rem;
+  }
+
+  body.kv-design-system main > section:nth-of-type(5) img[alt^="Exemplo de atividade"] {
+    width: min(78vw, 18rem);
+    height: auto;
+    aspect-ratio: 9 / 13;
+  }
+}
+
+.whatsapp-fab {
+  position: fixed;
+  left: 50%;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 70;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .65rem;
+  width: min(22rem, calc(100vw - 1.5rem));
+  min-height: 3.45rem;
+  padding: .42rem .55rem .42rem .48rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .48);
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, #22C85F 0%, #25D366 52%, #1FC45C 100%);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .24), 0 12px 30px rgba(14, 92, 47, .3);
+  font-size: .8rem;
+  line-height: 1.15;
+  text-align: left;
+  text-decoration: none;
+  isolation: isolate;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, .7rem) scale(.985);
+  animation: whatsapp-fab-enter .8s 3s cubic-bezier(.16, 1, .3, 1) forwards;
+  transition: filter .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.whatsapp-fab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 12% 0%, rgba(255, 255, 255, .22), transparent 42%);
+  pointer-events: none;
+}
+
+.whatsapp-fab__icon {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18);
+}
+
+.whatsapp-fab__icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.whatsapp-fab__copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .16rem;
+}
+
+.whatsapp-fab__copy strong {
+  font-size: .84rem;
+  font-weight: 850;
+  letter-spacing: -.01em;
+}
+
+.whatsapp-fab__copy > span {
+  font-size: .7rem;
+  font-weight: 650;
+  opacity: .88;
+}
+
+.whatsapp-fab__arrow {
+  display: grid;
+  width: 1.65rem;
+  height: 1.65rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #15984A;
+  box-shadow: 0 4px 12px rgba(12, 101, 48, .2);
+  transition: transform .2s ease;
+}
+
+.whatsapp-fab__arrow svg {
+  width: .9rem;
+  height: .9rem;
+}
+
+.whatsapp-fab:hover {
+  filter: brightness(1.02) saturate(1.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), 0 16px 36px rgba(14, 92, 47, .38);
+  transform: translate(-50%, -2px);
+}
+
+.whatsapp-fab:hover .whatsapp-fab__arrow { transform: translateX(2px); }
+
+.whatsapp-fab:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(37, 211, 102, .48), 0 14px 32px rgba(14, 92, 47, .38);
+}
+
+@keyframes whatsapp-fab-enter {
+  to {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 380px) {
+  .whatsapp-fab {
+    width: calc(100vw - 1rem);
+    gap: .5rem;
+    padding-inline: .42rem;
+  }
+
+
+  .whatsapp-fab__copy strong { font-size: .78rem; }
+  .whatsapp-fab__copy > span { font-size: .66rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
