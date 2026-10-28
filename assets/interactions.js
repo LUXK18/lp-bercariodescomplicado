@@ -111,7 +111,11 @@ if (offerSection) {
       price.textContent = "R$ 10";
       price.setAttribute("aria-label", "Pacote simples por dez reais");
     }
-    if (button) button.textContent = "QUERO O PACOTE SIMPLES";
+    if (button) {
+      button.textContent = "QUERO O PACOTE SIMPLES";
+      button.href = "https://pay.kiwify.com.br/auAJMkg";
+      button.setAttribute("aria-label", "Comprar o Pacote Simples por R$ 10");
+    }
   }
 
   if (completeCard) {
@@ -144,7 +148,12 @@ if (offerSection) {
       price.textContent = "R$ 27";
       price.setAttribute("aria-label", "Pacote completo por vinte e sete reais");
     }
-    if (button) button.textContent = "QUERO O PACOTE COMPLETO";
+    if (button) {
+      button.textContent = "QUERO O PACOTE COMPLETO";
+      button.href = "https://pay.kiwify.com.br/0JcOydA";
+      button.removeAttribute("data-checkout-pendente");
+      button.setAttribute("aria-label", "Comprar o Pacote Completo por R$ 27");
+    }
     if (checkoutNote) checkoutNote.textContent = "Pagamento único e acesso digital.";
     if (buttonNote) {
       buttonNote.textContent = "Acesso liberado após a confirmação do pagamento.";
@@ -170,8 +179,9 @@ document.head.append(themeColor);
 
 const whatsappButton = document.createElement("a");
 whatsappButton.className = "whatsapp-fab";
-whatsappButton.href =
-  "https://wa.me/5541996996906?text=Ol%C3%A1%21%20Fiquei%20com%20uma%20d%C3%BAvida%20sobre%20a%20Biblioteca%20Visual.";
+const whatsappMessage =
+  "Olá! Vim pela página do Berçário Descomplicado e gostaria de tirar uma dúvida sobre a Biblioteca Visual com 331 experiências.";
+whatsappButton.href = `https://wa.me/5541996996906?text=${encodeURIComponent(whatsappMessage)}`;
 whatsappButton.target = "_blank";
 whatsappButton.rel = "noopener noreferrer";
 whatsappButton.setAttribute(
